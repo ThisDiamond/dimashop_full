@@ -1,5 +1,8 @@
 <div class="w-75 mx-auto">
   <p class="fs-1">Login</p>
+  {{#if loginError}}
+    <div class="alert alert-danger">{{loginError}}</div>
+  {{/if}}
   <form action="./login" method="post">
     <div class="form-floating mb-3">
       <input
@@ -9,7 +12,7 @@
         id="floatingInput"
         placeholder="name@example.com"
       />
-      <label for="floatingInput">Email address</label>
+      <label for="floatingInput">Email adresingiz:</label>
     </div>
     <div class="form-floating">
       <input
@@ -19,8 +22,8 @@
         id="floatingPassword"
         placeholder="Password"
       />
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">Parolingiz:</label>
     </div>
-    <button class="btn btn-primary mt-3">Login</button>
+    <button class="btn btn-primary mt-3">Kirish</button>
   </form>
 </div>
