@@ -1,26 +1,56 @@
 <div class="container py-3">
   <div
-    class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom "
+    class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
   >
-    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-      <img src="img/dimashop.png" alt="" style=" height:40px; user-select:none">
+    <a
+      href="/"
+      class="d-flex align-items-center text-dark text-decoration-none"
+    >
+      <img
+        src="img/dimashop.png"
+        alt=""
+        style=" height:40px; user-select:none"
+      />
     </a>
 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
       {{#if isProducts}}
-        <a class="me-3 py-2 text-dark text-decoration-none border-bottom btn-dark border-3 pb-0 " href="./products">Products</a> <br>
+        <a
+          class="me-3 py-2 text-dark text-decoration-none border-bottom btn-dark border-3 pb-0"
+          href="./products"
+        >Products</a>
+        <br />
       {{else}}
-        <a class="me-3 py-2 text-dark text-decoration-none " href="./products">Products</a>
+        <a
+          class="me-3 py-2 text-dark text-decoration-none"
+          href="./products"
+        >Products</a>
       {{/if}}
       {{!-- {{#if isAdd}}
         <a class="me-3 py-2 text-dark text-decoration-none border-bottom btn-dark border-3 pb-0" href="./add">Add</a>
       {{else}}
         <a class="me-3 py-2 text-dark text-decoration-none " href="./add">Add</a>
       {{/if}} --}}
-      <div class="btn-group" role="group">
-      <a class="text-white text-decoration-none btn btn-secondary" href="./login">Login</a>
-      <a class="text-white text-decoration-none btn btn-dark " href="./register" >Register</a>
-      </div>
+
+      {{#if token}}
+        <div class="btn-group" role="group">
+          <a
+            class="text-white text-decoration-none btn btn-danger"
+            href="./logout"
+          >Logout</a>
+        </div>
+      {{else}}
+        <div class="btn-group" role="group">
+          <a
+            class="text-white text-decoration-none btn btn-secondary"
+            href="./login"
+          >Login</a>
+          <a
+            class="text-white text-decoration-none btn btn-dark"
+            href="./register"
+          >Register</a>
+        </div>
+      {{/if}}
     </nav>
   </div>
 </div>

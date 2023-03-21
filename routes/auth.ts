@@ -3,22 +3,30 @@ import Joi from 'joi'
 import db from '../model/database'
 import { v4 } from 'uuid'
 import bcrypt from 'bcrypt'
+import { generateJWTToken } from '../services/token.service'
 
 const router = Router()
 
+
 router.get('/register', (req, res) => {
+    if (req.cookies.token) { res.redirect('/') }
     res.render(
         'register',
         { title: 'Register', isRegister: true, registerError: req.flash('registerError') }
     )
 })
 router.get('/login', (req, res) => {
+    if (req.cookies.token) { res.redirect('/') }
     res.render(
         'login',
         { title: 'Login', isLogin: true, loginError: req.flash('loginError') }
     )
 })
 
+router.get('/logout', (req, res) => {
+    res.clearCookie('token')
+    res.redirect('/')
+})
 
 router.post('/login', async (req, res) => {
     const body = req.body;
@@ -54,10 +62,11 @@ router.post('/login', async (req, res) => {
 
     function login() {
         type User = {
+            id: string,
             email: string;
             password: string;
         }
-        db.get('SELECT email, password FROM users WHERE email=?', [body.email], async (err, row: User) => {
+        db.get('SELECT id, email, password FROM users WHERE email=?', [body.email], async (err, row: User) => {
             if (err) return console.log(err);
             if (row) {
                 // user found and check
@@ -66,8 +75,11 @@ router.post('/login', async (req, res) => {
                     req.flash('loginError', 'Parol xato:')
                     res.redirect('/login')
                 } else { // user found all check complated
-                    req.flash('loginError', `user ${row.email} pass ${row.password}`)
-                    res.redirect('/login')
+
+                    const token = generateJWTToken(row.id)
+                    res.cookie("token", token, { httpOnly: true, secure: true })
+
+                    res.redirect('/')
                 }
             }
             if (!row) {
@@ -112,16 +124,22 @@ router.post('/register', async (req, res) => {
         db.get('SELECT email, password FROM users WHERE email=?', [email], async (err, row: User) => {
             if (err) return console.log(err);
             if (row) {
-                req.flash('registerError',`Bunday foydalanuvchi ro'yxatdan o'tgan:`)
+                req.flash('registerError', `Bu Emaildan foydalanuvchi ro'yxatdan o'tgan:`)
                 res.redirect('/register')
                 return
-            } else {
+            } else { // users register save database
                 const sql = 'INSERT INTO users(id, firstname, lastname, email, password) VALUES(?,?,?,?,?)';
-                const params = [v4(), firstname, lastname, email, hashedPassword]
+                const uuidGen = v4()
+                const params = [uuidGen, firstname, lastname, email, hashedPassword]
                 db.run(sql, params, (err) => {
                     if (err != null) console.log(err);
                 })
-                res.redirect('/login')
+
+                // JWT token
+                const token = generateJWTToken(uuidGen)
+                res.cookie("token", token, { httpOnly: true, secure: true })
+
+                res.redirect('/')
             }
         })
     }

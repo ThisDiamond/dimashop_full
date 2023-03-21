@@ -3,8 +3,9 @@ import { engine, create } from 'express-handlebars'
 import session from "express-session";
 import dotenv from 'dotenv'
 import cors from 'cors'
-
 import flash from 'connect-flash'
+import cookieParser from "cookie-parser";
+import tokenMiddleware from './middleware/token'
 
 import AuthRoutes from './routes/auth'
 import ProductsRoutes from './routes/products'
@@ -25,6 +26,8 @@ server.use(express.urlencoded({ extended: true }))
 server.use(express.static('public'))
 server.use(session({ secret: "secret", resave: false, saveUninitialized: false }))
 server.use(flash());
+server.use(cookieParser())
+server.use(tokenMiddleware)
 
 server.use(AuthRoutes)
 server.use(ProductsRoutes)
