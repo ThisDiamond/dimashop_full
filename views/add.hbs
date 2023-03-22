@@ -1,1 +1,61 @@
-<h1>add</h1>
+<div class="w-75 mx-auto">
+  <p class="fs-1">Add Products</p>
+  {{#if errorAddProducts}}
+    <div class="alert alert-danger alert-dismissible fade show" id="errorCloseBtn" role="alert">
+      <strong>Xatolik! </strong>
+      {{errorAddProducts}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  {{else}}
+
+  {{/if}}
+  <form action="./add-products" method="post">
+    <div class="form-floating mb-3">
+      <input
+        name="title"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="title"
+      />
+      <label for="floatingInput">Title</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea
+        name="description"
+        class="form-control"
+        placeholder="Description"
+        id="floatingTextarea2"
+        style="height: 100px"
+      ></textarea>
+      <label for="floatingTextarea2">Description</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        name="image"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="image"
+      />
+      <label for="floatingInput">image</label>
+    </div>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text bg-light" id="addon-wrapping">$</span>
+      <input
+        name="price"
+        type="number"
+        class="form-control"
+        placeholder="Price"
+        aria-label="Username"
+        aria-describedby="addon-wrapping"
+      />
+    </div>
+    <button class="btn btn-primary mt-3">Yuborish</button>
+  </form>
+</div>

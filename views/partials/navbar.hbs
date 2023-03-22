@@ -1,56 +1,42 @@
-<div class="container py-3">
-  <div
-    class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom"
-  >
-    <a
-      href="/"
-      class="d-flex align-items-center text-dark text-decoration-none"
-    >
-      <img
-        src="img/dimashop.png"
-        alt=""
-        style=" height:40px; user-select:none"
-      />
+<aside>
+  <div>
+    <a href="/">
+      <img src="img/dimashop.png" alt="" class="logo" />
     </a>
-
-    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-      {{#if isProducts}}
-        <a
-          class="me-3 py-2 text-dark text-decoration-none border-bottom btn-dark border-3 pb-0"
-          href="./products"
-        >Products</a>
-        <br />
-      {{else}}
-        <a
-          class="me-3 py-2 text-dark text-decoration-none"
-          href="./products"
-        >Products</a>
-      {{/if}}
-      {{!-- {{#if isAdd}}
-        <a class="me-3 py-2 text-dark text-decoration-none border-bottom btn-dark border-3 pb-0" href="./add">Add</a>
-      {{else}}
-        <a class="me-3 py-2 text-dark text-decoration-none " href="./add">Add</a>
-      {{/if}} --}}
-
-      {{#if token}}
-        <div class="btn-group" role="group">
-          <a
-            class="text-white text-decoration-none btn btn-danger"
-            href="./logout"
-          >Logout</a>
-        </div>
-      {{else}}
-        <div class="btn-group" role="group">
-          <a
-            class="text-white text-decoration-none btn btn-secondary"
-            href="./login"
-          >Login</a>
-          <a
-            class="text-white text-decoration-none btn btn-dark"
-            href="./register"
-          >Register</a>
-        </div>
-      {{/if}}
-    </nav>
   </div>
-</div>
+  <nav>
+    <ul class="menu">
+        <li class='menu-item'>
+          <i class="bi bi-display"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Monitor</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-gpu-card"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Videokarta</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-memory"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Tezkor xotira</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-hdd"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Doimiy xotira</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-plug"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Blok pitaniya</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-keyboard"></i>
+          <a class=" text-dark text-decoration-none" href="./products">klaviatura</a>
+          </li>
+        <li class='menu-item'>
+          <i class="bi bi-motherboard"></i>
+          <a class=" text-dark text-decoration-none" href="./products">Plata</a>
+          </li>
+    </ul>
+  </nav>
+  <div class="recommend">
+
+  </div>
+</aside>

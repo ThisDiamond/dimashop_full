@@ -1,0 +1,38 @@
+<header>
+
+  <div class="category-name">
+    <h3 class="p-0 m-0">Faqat siz uchun!</h3>
+    <small>Eng yaxshilari</small>
+  </div>
+  <div class="search-area">
+    <div class="search-area-icon">
+      <i class="bi bi-search"></i>
+    </div>
+    <input
+      id="search-product"
+      name="search-product"
+      type="text"
+      placeholder="Mahsulot izlash"
+      aria-label="search-product"
+      class="search-input"
+    />
+  </div>
+  <div class="user">
+    <i class="bi bi-heart-fill" style="color:crimson"></i>
+    <span>Tanlangan</span>
+    <i class="bi bi-bag"></i>
+    <span>Savatcha</span>
+
+    {{#if token}}
+    <a href="/logout" style="color:#5c5c5c">
+      <i class="bi bi-box-arrow-right"></i>
+    </a>
+    {{else}}
+      <a href="/login" style="color:#5c5c5c">
+        <i class="bi bi-person-circle"></i>
+      </a>
+    {{/if}}
+
+  </div>
+
+</header>

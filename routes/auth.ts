@@ -4,19 +4,18 @@ import db from '../model/database'
 import { v4 } from 'uuid'
 import bcrypt from 'bcrypt'
 import { generateJWTToken } from '../services/token.service'
+import checklogin from '../middleware/checklogin'
 
 const router = Router()
 
 
-router.get('/register', (req, res) => {
-    if (req.cookies.token) { res.redirect('/') }
+router.get('/register', checklogin, (req, res) => {
     res.render(
         'register',
         { title: 'Register', isRegister: true, registerError: req.flash('registerError') }
     )
 })
-router.get('/login', (req, res) => {
-    if (req.cookies.token) { res.redirect('/') }
+router.get('/login', checklogin, (req, res) => {
     res.render(
         'login',
         { title: 'Login', isLogin: true, loginError: req.flash('loginError') }
@@ -72,7 +71,7 @@ router.post('/login', async (req, res) => {
                 // user found and check
                 const isPasswordEqual = await bcrypt.compare(body.password, String(row.password));
                 if (!isPasswordEqual) {
-                    req.flash('loginError', 'Parol xato:')
+                    req.flash('loginError', 'Parol xato')
                     res.redirect('/login')
                 } else { // user found all check complated
 
@@ -98,7 +97,7 @@ router.post('/register', async (req, res) => {
 
     const { firstname, lastname, email, password } = body
     if (!firstname || !lastname || !email || !password) {
-        req.flash('registerError', `Hamma maydonlar to'ldirilishi shart:`)
+        req.flash('registerError', `Hamma maydonlar to'ldirilishi shart`)
         res.redirect('/register')
         return
     }

@@ -9,6 +9,7 @@ import tokenMiddleware from './middleware/token'
 
 import AuthRoutes from './routes/auth'
 import ProductsRoutes from './routes/products'
+import DashboardRoutes from './routes/dashboard'
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ server.use(tokenMiddleware)
 
 server.use(AuthRoutes)
 server.use(ProductsRoutes)
+server.use(DashboardRoutes)
 
 const StartServer = () => {
     try {
