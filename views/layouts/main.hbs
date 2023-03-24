@@ -13,11 +13,13 @@
   <title> Dashboard | Dima </title>
 </head>
   <body>
-    {{> aside_admin}}
-    
-    <main>
-    {{{body}}}
-    </main>
+    {{> header_admin}}
+    <div class="main-wrapper">
+      {{> aside_admin}}
+     <main>
+        {{{body}}}
+     </main>
+    </div>
   </body>
 </html>
 {{else}}
@@ -25,11 +27,10 @@
     {{!-- head --}}
 {{> head}}
   <body>
-  {{!-- navbar --}}
-  {{> navbar}}
+     {{> header}}
   <main>
-    {{!-- main head --}}
-    {{> header}}
+    {{!-- navbar --}}
+    {{> navbar}}
     {{!-- body --}}
     {{{body}}}
   </main> 

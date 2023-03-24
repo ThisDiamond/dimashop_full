@@ -1,20 +1,25 @@
 <div class="main-wrapper">
-
   <div class="content-head">
-
     <div class="slider">
       <div class="slider-img-area">
         <img src="img/naushnik.png" alt="" class="slider-img" />
       </div>
       <div class="head-text">
-        <h4>Boots Studio3 Wireless Headphone</h4>
-        <small> * * * * * (2000+ )</small>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, fuga
-          consequuntur
+        <h4>Beats Studio3 Wireless Noise Cancelling</h4>
+        <small>
+          <i class="bi bi-star-fill" style="color:rgb(218, 185, 1)"></i>
+          <i class="bi bi-star-fill" style="color:rgb(218, 185, 1)"></i>
+          <i class="bi bi-star-fill" style="color:rgb(218, 185, 1)"></i>
+          <i class="bi bi-star-fill" style="color:rgb(218, 185, 1)"></i>
+          <i class="bi bi-star-fill" style="color:rgb(218, 185, 1)"></i>
+          (2000+ )
+        </small>
+        <p>Headphones - Apple W1 Headphone Chip, Class 1 Bluetooth, 22 Hours of
+          Listening Time
         </p>
-        <h3>Price $155.95</h3>
+        <h3>Narxi: $170.38</h3>
         <div class="head-text-colors">
-          Colors:
+          Rangi:
           <span
             style="background-color: crimson; width:16px; height:16px; border-radius:50%; display:inline-block"
           ></span>
@@ -30,7 +35,7 @@
             <i class="bi bi-heart-fill"></i>
           </button>
           <button class="add-to-cart tanlangan">
-              Savatchaga qo'shish 
+            Savatchaga qo'shish
           </button>
           <button class="buy-now tanlangan">
             Hozir sotib olish
@@ -40,89 +45,83 @@
 
     </div>
     <div class="discount">
-      discount
+      <img
+        src="https://assets.asaxiy.uz/product/items/desktop/efe6398127928f1b2e9ef3207fb826632023031016015950789N7UjAPU09R.jpg.webp"
+        alt=""
+        class="discount-img"
+      />
+      <h3>
+        Notebook HP 250 G8
+        <div class="buy">
+          <i class="bi bi-bag"></i>
+        </div>
+      </h3>
+      <h2 class="discount-price">
+
+        <span class="oldPrice">
+          <s>430$</s>
+        </span>
+        <span class="newPrice">399$</span>
+      </h2>
+
     </div>
   </div>
 
-</div>
-<div class="main-content">
-  <div class="products">
+  <div class="main-content">
+    <div class="products">
+      {{#each product}}
+        <div class="product">
+          <div class="product-img-area">
+            <img src="{{image}}" alt="" class="product-img" />
+          </div>
+          <div class="product-text">
+            <h5 class="product-th">{{title}}</h5>
+            <small class="product-price">Narxi: {{price}}</small>
+          </div>
+          <div class="product-footer">
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <span>4.9</span>
+            </div>
+            <div class="addProduct-btn-area">
+              <i
+                class="bi bi-heart"
+                style="color:crimson; font-size:25px; margin-top:2px"
+              ></i>
+              <div class="addProduct-btn">
+                +
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      {{#each product}}
+        <div class="product">
+          <div class="product-img-area">
+            <img src="{{image}}" alt="" class="product-img" />
+          </div>
+          <div class="product-text">
+            <h5 class="product-th">{{title}}</h5>
+            <small class="product-price">Narxi: {{price}}</small>
+          </div>
+          <div class="product-footer">
+            <div class="product-rating">
+              <i class="bi bi-star-fill"></i>
+              <span>4.9</span>
+            </div>
+            <div class="addProduct-btn-area">
+              <i
+                class="bi bi-heart"
+                style="color:crimson; font-size:25px; margin-top:2px"
+              ></i>
+              <div class="addProduct-btn">
+                +
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
 
-    <div class="product">
-      <div class="product-img-area">
-        <img src="img/naushnik.png" alt="" class="product-img" />
-      </div>
-      <div class="product-text">
-        <h5 class="product-th">Orginal Beats Pro</h5>
-        <small class="product-price">Price: $12,99</small>
-      </div>
-      <div class="product-footer">
-        <div class="product-rating">
-          <i class="bi bi-star-fill"></i>
-          <span>4.9</span>
-        </div>
-        <div class="addProduct-btn">
-          +
-        </div>
-      </div>
     </div>
-
-    <div class="product">
-      <div class="product-img-area">
-        <img src="img/naushnik.png" alt="" class="product-img" />
-      </div>
-      <div class="product-text">
-        <h5 class="product-th">Orginal Beats Pro</h5>
-        <small class="product-price">Price: $12,99</small>
-      </div>
-      <div class="product-footer">
-        <div class="product-rating">
-          <i class="bi bi-star-fill"></i>
-          <span>4.9</span>
-        </div>
-        <div class="addProduct-btn">
-          +
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-img-area">
-        <img src="img/naushnik.png" alt="" class="product-img" />
-      </div>
-      <div class="product-text">
-        <h5 class="product-th">Orginal Beats Pro</h5>
-        <small class="product-price">Price: $12,99</small>
-      </div>
-      <div class="product-footer">
-        <div class="product-rating">
-          <i class="bi bi-star-fill"></i>
-          <span>4.9</span>
-        </div>
-        <div class="addProduct-btn">
-          +
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-img-area">
-        <img src="img/naushnik.png" alt="" class="product-img" />
-      </div>
-      <div class="product-text">
-        <h5 class="product-th">Orginal Beats Pro</h5>
-        <small class="product-price">Price: $12,99</small>
-      </div>
-      <div class="product-footer">
-        <div class="product-rating">
-          <i class="bi bi-star-fill"></i>
-          <span>4.9</span>
-        </div>
-        <div class="addProduct-btn">
-          +
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>

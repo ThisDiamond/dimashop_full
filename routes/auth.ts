@@ -96,6 +96,7 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(body.password, 10)
 
     const { firstname, lastname, email, password } = body
+
     if (!firstname || !lastname || !email || !password) {
         req.flash('registerError', `Hamma maydonlar to'ldirilishi shart`)
         res.redirect('/register')
@@ -103,6 +104,7 @@ router.post('/register', async (req, res) => {
     }
 
     interface RegJoi { firstname: string, lastname: string, email: string, password: string, }
+
     const RegisterSchema = Joi.object<RegJoi>({
         firstname: Joi.string().required().min(3).max(16).pattern(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/),
         lastname: Joi.string().min(3).max(20).pattern(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/),
@@ -127,9 +129,9 @@ router.post('/register', async (req, res) => {
                 res.redirect('/register')
                 return
             } else { // users register save database
-                const sql = 'INSERT INTO users(id, firstname, lastname, email, password) VALUES(?,?,?,?,?)';
+                const sql = 'INSERT INTO users(id, firstname, lastname, email, password, role) VALUES(?,?,?,?,?,?)';
                 const uuidGen = v4()
-                const params = [uuidGen, firstname, lastname, email, hashedPassword]
+                const params = [uuidGen, firstname, lastname, email, hashedPassword, 'user']
                 db.run(sql, params, (err) => {
                     if (err != null) console.log(err);
                 })

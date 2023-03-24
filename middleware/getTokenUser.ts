@@ -14,7 +14,8 @@ export default async function getTokenUser(req: any, res: any, next: any) {
         firstname: string,
         lastname: string,
         email: string,
-        password: string
+        password: string,
+        role: string
     }
 
     const row: Row = await new Promise((resolve, reject) => {
@@ -27,7 +28,7 @@ export default async function getTokenUser(req: any, res: any, next: any) {
         });
     })
 
-    req.email = row.email
+    req.role = row.role
 
     next()
 }

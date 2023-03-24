@@ -9,7 +9,7 @@ import tokenMiddleware from './middleware/token'
 
 import AuthRoutes from './routes/auth'
 import ProductsRoutes from './routes/products'
-import DashboardRoutes from './routes/dashboard'
+import adminOnly from './routes/admin-only'
 
 dotenv.config()
 
@@ -32,7 +32,7 @@ server.use(tokenMiddleware)
 
 server.use(AuthRoutes)
 server.use(ProductsRoutes)
-server.use(DashboardRoutes)
+server.use(adminOnly)
 
 const StartServer = () => {
     try {

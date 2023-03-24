@@ -1,5 +1,9 @@
 <header>
-
+  <div>
+    <a href="/">
+      <img src="img/dimashop.png" alt="" class="logo" />
+    </a>
+  </div>
   <div class="category-name">
     <h3 class="p-0 m-0">Faqat siz uchun!</h3>
     <small>Eng yaxshilari</small>
@@ -22,11 +26,16 @@
     <span>Tanlangan</span>
     <i class="bi bi-bag"></i>
     <span>Savatcha</span>
-
+    {{#if dashboardCheck}}
+      <a href="/dashboard" style="color:#5c5c5c">
+        <i class="bi bi-speedometer2"></i>
+      </a>
+    {{else}}
+    {{/if}}
     {{#if token}}
-    <a href="/logout" style="color:#5c5c5c">
-      <i class="bi bi-box-arrow-right"></i>
-    </a>
+      <a href="/logout" style="color:#5c5c5c">
+        <i class="bi bi-box-arrow-right"></i>
+      </a>
     {{else}}
       <a href="/login" style="color:#5c5c5c">
         <i class="bi bi-person-circle"></i>
