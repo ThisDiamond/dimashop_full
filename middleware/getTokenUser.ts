@@ -1,7 +1,8 @@
 import * as jwt from 'jsonwebtoken'
 import db from '../model/database'
+import { NextFunction, Request, Response } from "express";
 
-export default async function getTokenUser(req: any, res: any, next: any) {
+export default async (req: Request, res: Response, next: NextFunction) => {
     if (!req.cookies.token) {
         res.redirect('/login')
         return

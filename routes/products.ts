@@ -1,10 +1,8 @@
-import { Router } from "express";
-import authcheckMiddleware from "../middleware/authcheck";
-import getTokenUser from "../middleware/getTokenUser";
+import { Request, Response, Router } from "express";
 import db from "../model/database";
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", (req: Request, res: Response) => {
   db.all("SELECT * FROM product;", (err: any, rows) => {
     if (err) {
       console.log(err);
@@ -18,7 +16,7 @@ router.get("/", (req, res) => {
     }
   });
 });
-router.get("/products", (req, res) => {
+router.get("/products", (req: Request, res: Response) => {
   res.render("products", { title: "Products", isProducts: true });
 });
 

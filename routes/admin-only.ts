@@ -1,10 +1,9 @@
-import { Router } from "express";
-import authcheckMiddleware from "../middleware/authcheck";
+import { Request, Response, Router } from "express";
 import getTokenUser from "../middleware/getTokenUser";
 const router = Router();
 import db from "../model/database";
-import { Request } from "express";
-import { v4 } from 'uuid'
+import { v4 } from "uuid";
+import checkAdmin from "../middleware/check-admin";
 
 declare global {
   namespace Express {
@@ -14,86 +13,60 @@ declare global {
   }
 }
 
+interface Row {
+  id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+}
 
-
-router.get("/dashboard", getTokenUser, (req, res) => {
-  const role = req.role;
-  let statusAdmin: boolean = false;
-  if (String(role) == "admin") {
-    statusAdmin = true;
-  }
-
-  if (statusAdmin) {
-    db.all("SELECT * FROM users;", (err: any, rows) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("Internal server error");
-        return;
-      }
-
-      res.render("admin/dashboard", {
-        statusAdmin,
-        data: rows,
-        totalUser: rows.length,
-      });
-    });
-  } else {
-    res.redirect("/");
-  }
-});
-
-router.get("/users_admin", getTokenUser, (req, res) => {
-  const role = req.role;
-  let statusAdmin: boolean = false;
-  if (String(role) == "admin") {
-    statusAdmin = true;
-  }
-  if (statusAdmin) {
-    interface Row {
-      id: string;
-      firstname: string;
-      lastname: string;
-      email: string;
-      password: string;
+router.get("/dashboard", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  db.all("SELECT * FROM users;", (err: any, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+      return;
     }
-    db.all("SELECT * FROM users;", (err: any, rows: Row) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("Internal server error");
-        return;
-      }
 
-      res.render("admin/users_admin", {
-        statusAdmin,
-        data: rows,
-      });
+    res.render("admin/dashboard", {
+      statusAdmin: true,
+      data: rows,
+      totalUser: rows.length,
     });
-  } else {
-    res.redirect("/");
-  }
+  });
 });
 
-router.get("/products_list_admin", getTokenUser, (req, res) => {
-  const role = req.role;
-  let statusAdmin: boolean = false;
-  if (String(role) == "admin") {
-    statusAdmin = true;
-  }
-  if (statusAdmin) {
-    db.all("SELECT * FROM product;", (err: any, rows) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("Internal server error");
-        return;
-      }
-      res.render("admin/products_list_admin", { statusAdmin, data: rows });
+router.get("/users_admin", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  db.all("SELECT * FROM users;", (err: any, rows: Row) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+      return;
+    }
+
+    res.render("admin/users_admin", {
+      statusAdmin: true,
+      data: rows,
     });
-  } else {
-    res.redirect("/");
-  }
+  });
 });
 
-router.get("/add", getTokenUser, (req, res) => {
+router.get("/products_list_admin", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  db.all("SELECT * FROM product;", (err: any, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+      return;
+    }
+    res.render("admin/products_list_admin", {
+      statusAdmin: true,
+      data: rows,
+    });
+  });
+});
+
+router.get("/add", getTokenUser, checkAdmin, (req: Request, res: Response) => {
   const role = req.role;
   let statusAdmin: boolean = false;
   if (String(role) == "admin") {
@@ -104,41 +77,30 @@ router.get("/add", getTokenUser, (req, res) => {
       title: "Add new product",
       isAdd: true,
       errorAddProducts: req.flash("errorAddProducts"),
-      statusAdmin
+      statusAdmin,
     });
   } else {
     res.redirect("/");
   }
 });
 
-router.post("/add-products", getTokenUser, (req, res) => {
-  const role = req.role;
-  let statusAdmin: boolean = false;
-  if (String(role) == "admin") {
-    statusAdmin = true;
-  }
-  if (statusAdmin) {
-
-    const { title, description, image, price } = req.body;
-    if (!title || !description || !image || !price) {
-      req.flash("errorAddProducts", `Hamma maydonlar to'ldirilishi shart!`);
-      res.redirect("/add");
-    } else {
-      // validatsiya qilishi kerak
-      const sql =
-        "INSERT INTO Product(id, title, description, image, price) VALUES(?,?,?,?,?)";
-      const uuidGen = v4();
-      const params = [uuidGen, title, description, image, price];
-      db.run(sql, params, (err) => {
-        if (err != null) console.log(err);
-      });
-
-      res.redirect("/add");
-    }
+router.post("/add-products", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  const { title, description, image, price } = req.body;
+  if (!title || !description || !image || !price) {
+    req.flash("errorAddProducts", `Hamma maydonlar to'ldirilishi shart!`);
+    res.redirect("/add");
   } else {
-    res.redirect("/");
+    // validatsiya qilishi kerak
+    const sql =
+      "INSERT INTO Product(id, title, description, image, price) VALUES(?,?,?,?,?)";
+    const uuidGen = v4();
+    const params = [uuidGen, title, description, image, price];
+    db.run(sql, params, (err) => {
+      if (err != null) console.log(err);
+    });
+
+    res.redirect("/add");
   }
 });
-
 
 export default router;
