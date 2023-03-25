@@ -1,10 +1,12 @@
 {
   "name": "dimashop",
   "version": "1.0.0",
-  "description": "Dimashop ",
+  "description": "Dimashop",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "node index.js",
+    "dev": "nodemon index.ts",
+    "build": "tsc && cp -R src/public build && cp -R src/views build"
   },
   "author": "Dilshodbek Matyaqubov",
   "license": "ISC",
