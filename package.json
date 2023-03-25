@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.ts",
+    "dev": "nodemon --exec npx ts-node index.ts",
     "build": "tsc && cp -R src/public build && cp -R src/views build"
-  },
+},
   "author": "Dilshodbek Matyaqubov",
   "license": "ISC",
   "dependencies": {
