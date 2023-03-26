@@ -18,9 +18,12 @@ header {
   /* border-bottom: 3px solid #b6b6b6; */
 }
 aside {
+  overflow: hidden;
+  background-color: #3c4b64;
+  color: white;
   min-width: 250px;
-  height: 100vh;
-  padding: 15px 20px;
+  height: 100v;
+  padding: 30px 20px;
   /* border-right: 3px solid #b6b6b6; */
 }
 main {
@@ -33,17 +36,19 @@ main {
   padding: 15px 20px;
 }
 nav {
-  width: 100%;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
 }
 .main-wrapper {
   display: flex;
 }
 
-.logo-area {
-  width: 280px;
+.logo-area-a {
+  display: block;
+  margin-bottom: 20px;
 }
 .logo {
-  height: 40px;
+  height: 33px;
 }
 
 .search-area {
@@ -94,7 +99,8 @@ nav {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #555555;
+  color: rgb(240, 240, 240);
+  /* color: #555555; */
 }
 .menu-item i {
   font-size: 24px;
@@ -110,7 +116,8 @@ nav {
   padding: 0;
   padding-left: 45px;
   font-size: 15px;
-  color: #858585;
+  color: rgb(240, 240, 240);
+  /* color: #858585; */
 }
 .logo-area {
   background-color: #ffffff;
@@ -148,6 +155,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0 15px 0 0;
+}
+.products-head-btns {
+  display: flex;
+  align-items: center;
 }
 .products-head a {
   background-color: #d94932;
@@ -270,10 +281,20 @@ nav {
   align-items: center;
   justify-content: center;
 }
-.view {
+.view-wrapper {
   background-color: white;
   width: 60%;
   height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.view {
+  background-color: white;
+  width: 100%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -289,7 +310,8 @@ nav {
 .view-text-area {
 }
 .view img {
-  height: 400px; /* add media query*/
+  height: 380px; /* add media query*/
+  margin-bottom: 20px;
 }
 .view-title {
 }
@@ -304,6 +326,22 @@ nav {
   border-radius: 3px;
   padding: 3px 6px;
   font-size: large;
+}
+.view-edit-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0 50px;
+}
+.view-edit-form {
+  width: 600px;
+}
+.tools-wrapper-close {
+  align-self: flex-end;
+  background-color: white;
+  color: #d94932;
+  font-size: xx-large;
+  border: 0;
 }
 .hidden {
   display: none;

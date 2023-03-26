@@ -32,13 +32,16 @@
         <div class="description hidden">
           {{description}}
         </div>
+        <div class="idProduct hidden">
+          {{id}}
+        </div>
       </div>
       <div class="product-edit-btn">
         <button class="bg-green viewTool">
           <i class="bi bi-eye"></i>
           <span> View</span>
         </button>
-        <button class="bg-blue">
+        <button class="bg-blue viewEdit">
           <i class="bi bi-pencil-square"></i>
           <span> Edit</span>
         </button>
@@ -59,8 +62,21 @@
 </div>
 
 <div class="tools-wrapper hidden">
-  <div id="view" class="view hidden">
 
+  <div id="view" class="view-wrapper">
+    <div class="products-head">
+      <h2>Edit product</h2>
+      <span class="products-head-btns">
+        <button class="bg-green view-edit-button">
+          <i class="bi bi-sd-card"></i>
+          <span> Save</span>
+        </button>
+        <button class="tools-wrapper-close"><i
+            class="bi bi-x-square"
+          ></i></button>
+      </span>
+    </div>
+    <div id="view" class="view hidden"></div>
   </div>
 </div>
 
