@@ -17,7 +17,7 @@ router.get("/", (req: Request, res: Response) => {
   });
 });
 router.get("/products", (req: Request, res: Response) => {
-  res.render("products", { title: "Products", isProducts: true });
+  res.status(200).render("products", { title: "Products", isProducts: true });
 });
 
 export default router;

@@ -21,6 +21,14 @@ interface Row {
   password: string;
 }
 
+interface Product {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+}
+
 router.get("/dashboard", getTokenUser, checkAdmin, (req: Request, res: Response) => {
   db.all("SELECT * FROM users;", (err: any, rows) => {
     if (err) {
@@ -29,7 +37,7 @@ router.get("/dashboard", getTokenUser, checkAdmin, (req: Request, res: Response)
       return;
     }
 
-    res.render("admin/dashboard", {
+    res.status(200).render("admin/dashboard", {
       statusAdmin: true,
       data: rows,
       totalUser: rows.length,
@@ -45,7 +53,7 @@ router.get("/users_admin", getTokenUser, checkAdmin, (req: Request, res: Respons
       return;
     }
 
-    res.render("admin/users_admin", {
+    res.status(200).render("admin/users_admin", {
       statusAdmin: true,
       data: rows,
     });
@@ -53,36 +61,41 @@ router.get("/users_admin", getTokenUser, checkAdmin, (req: Request, res: Respons
 });
 
 router.get("/products_list_admin", getTokenUser, checkAdmin, (req: Request, res: Response) => {
-  db.all("SELECT * FROM product;", (err: any, rows) => {
+  db.all("SELECT * FROM product;", (err: any, product: Product) => {
     if (err) {
       console.log(err);
       res.status(500).send("Internal server error");
       return;
     }
-    res.render("admin/products_list_admin", {
+
+    res.status(200).render("admin/products_list_admin", {
       statusAdmin: true,
-      data: rows,
+      deleteProduct: req.flash('deleteProduct'),
+      product,
     });
+
   });
 });
 
 router.get("/add", getTokenUser, checkAdmin, (req: Request, res: Response) => {
-  const role = req.role;
-  let statusAdmin: boolean = false;
-  if (String(role) == "admin") {
-    statusAdmin = true;
-  }
-  if (statusAdmin) {
-    res.render("admin/add", {
-      title: "Add new product",
-      isAdd: true,
-      errorAddProducts: req.flash("errorAddProducts"),
-      statusAdmin,
-    });
-  } else {
-    res.redirect("/");
-  }
+
+  res.status(200).render("admin/add", {
+    title: "Add new product",
+    isAdd: true,
+    errorAddProducts: req.flash("errorAddProducts"),
+    isAddProducts: req.flash("isAddProducts"),
+    statusAdmin: true,
+  });
+
 });
+
+router.get('/delete/:id', getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  db.run('DELETE FROM Product WHERE id=?', [req.params.id], (err) => {
+    if (err) console.log(err);
+    req.flash("deleteProduct", `Mahsulot o'chirib tashlandi!`);
+    res.redirect('/products_list_admin')
+  })
+})
 
 router.post("/add-products", getTokenUser, checkAdmin, (req: Request, res: Response) => {
   const { title, description, image, price } = req.body;
@@ -98,7 +111,7 @@ router.post("/add-products", getTokenUser, checkAdmin, (req: Request, res: Respo
     db.run(sql, params, (err) => {
       if (err != null) console.log(err);
     });
-
+    req.flash("isAddProducts", `Yangi mahsulot qoshildi.`);
     res.redirect("/add");
   }
 });

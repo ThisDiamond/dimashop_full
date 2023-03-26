@@ -17,14 +17,14 @@ interface RegJoi {
 }
 
 router.get("/register", checklogin, (req: Request, res: Response) => {
-  res.render("register", {
+  res.status(200).render("register", {
     title: "Register",
     isRegister: true,
     registerError: req.flash("registerError"),
   });
 });
 router.get("/login", checklogin, (req: Request, res: Response) => {
-  res.render("login", {
+  res.status(200).render("login", {
     title: "Login",
     isLogin: true,
     loginError: req.flash("loginError"),

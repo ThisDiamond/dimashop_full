@@ -1,5 +1,9 @@
-<div style="width:800px;">
-  <p class="fs-1">Add Products</p>
+<div class="products-head">
+  <h2>Create product</h2>
+  <a href="/products_list_admin">view products</a>
+</div>
+
+<div style="width:100%; ">
   {{#if errorAddProducts}}
     <div
       class="alert alert-danger alert-dismissible fade show"
@@ -16,8 +20,24 @@
       ></button>
     </div>
   {{else}}
-
+    {{#if isAddProducts}}
+      <div
+        class="alert alert-success alert-dismissible fade show"
+        id="errorCloseBtn"
+        role="alert"
+      >
+        <strong>Muvaffaqqiyatli! </strong>
+        {{isAddProducts}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
   {{/if}}
+
   <form action="./add-products" method="post">
     <div class="form-floating mb-3">
       <input
@@ -35,7 +55,7 @@
         class="form-control"
         placeholder="Description"
         id="floatingTextarea2"
-        style="height: 100px"
+        style="min-height: 250px"
       ></textarea>
       <label for="floatingTextarea2">Description</label>
     </div>

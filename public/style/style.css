@@ -82,7 +82,7 @@ header {
   background-color: #252525;
   color: white;
   padding: 7px 14px;
-  margin-right: 25px;
+  margin-right: 2px;
   border-radius: 3px;
 }
 .search-area {
@@ -239,7 +239,6 @@ header {
   padding: 12px;
   display: flex;
   flex-direction: column;
-
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .product-img-area {
