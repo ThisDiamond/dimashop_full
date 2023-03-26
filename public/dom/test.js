@@ -8,6 +8,8 @@ viewTools.forEach((viewTool) => {
   });
 });
 
-closeToolsWrapper.addEventListener('click', ()=>{
-  toolsWrapper.classList.add('hidden')
-})
+closeToolsWrapper.addEventListener("click", () => {
+  toolsWrapper.classList.add("hidden");
+});
+
+/***********************************************/
