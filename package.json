@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "node index.js",
-    "dev": "ts-node index.ts",
-    "build": "tsc && cp -R src/public build && cp -R src/views build"
+    "dev": "ts-node index.ts"
 },
   "author": "Dilshodbek Matyaqubov",
   "license": "ISC",

@@ -1,7 +1,64 @@
 <div class="main-wrapper">
   <div class="content-head">
     <div class="slider">
-      <div class="slider-img-area">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/img/slider/1.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/slider/2.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/img/slider/3.jpg" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{! <div class="slider-img-area">
         <img src="img/naushnik.png" alt="" class="slider-img" />
       </div>
       <div class="head-text">
@@ -41,7 +98,7 @@
             Hozir sotib olish
           </button>
         </div>
-      </div>
+      </div> }}
 
     </div>
     <div class="discount">
@@ -68,6 +125,16 @@
   </div>
 
   <div class="main-content">
+    <div class="category-name">
+      <div>
+        <h3 class="p-0 m-0">Tavfsiya etamiz!</h3>
+        <small>Eng yaxshilari</small>
+      </div>
+      <div class="seemore-btn">
+        Yana ko'rish
+        <i class="bi bi-caret-right-fill"></i>
+      </div>
+    </div>
     <div class="products">
       {{#each product}}
         <div class="product">
