@@ -157,6 +157,7 @@ nav {
   border-radius: 3px;
 }
 .products {
+  position: relative;
   display: flex;
   justify-content: stretch;
   flex-wrap: wrap;
@@ -198,6 +199,7 @@ nav {
   margin-bottom: 10px;
 }
 .product-edit-btn {
+  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 0 2px;
@@ -221,6 +223,28 @@ nav {
   text-decoration: none;
   color: inherit;
   font-size: small;
+}
+.deleteBtnActive {
+  background-color: white;
+  position: absolute;
+  bottom: 35px;
+  padding: 5px 7px;
+  padding-right: 0;
+  right: 0;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.deleteBtnActive a {
+  min-width: 40px;
+  padding: 7px 12.5px;
+  background-color: #f66161;
+}
+.deleteBtnActive span {
+  min-width: 40px;
+  padding: 7px 14.5px;
+  background-color: #5ab400;
 }
 .bg-green {
   background-color: #379265;
@@ -251,13 +275,35 @@ nav {
   width: 60%;
   height: 80%;
   display: flex;
+  align-items: center;
+  justify-content: stretch;
   flex-direction: column;
+  gap: 25px;
+  padding: 25px;
 }
-.closeToolsWrapper {
-  color: #d94932;
+.view-product-area {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.view-text-area {
+}
+.view img {
+  height: 400px; /* add media query*/
+}
+.view-title {
+}
+.view-price {
+  margin-top: 25px;
+  font-size: larger;
+  font-weight: 500;
+}
+.view-edit-button {
+  color: white;
   border: 0;
-  font-size: x-large;
-  align-self: flex-end;
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-size: large;
 }
 .hidden {
   display: none;

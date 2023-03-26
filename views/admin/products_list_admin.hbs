@@ -2,6 +2,7 @@
   <h2>Products list</h2>
   <a href="/add">add product</a>
 </div>
+
 {{#if deleteProduct}}
   <div
     class="alert alert-success alert-dismissible fade show w-100"
@@ -18,6 +19,7 @@
     ></button>
   </div>
 {{/if}}
+
 <div class="products">
   {{#each product}}
     <div class="product">
@@ -27,6 +29,9 @@
       <div class="product-text">
         <h5 class="product-th">{{title}}</h5>
         <small class="product-price">Narxi: {{price}}</small>
+        <div class="description hidden">
+          {{description}}
+        </div>
       </div>
       <div class="product-edit-btn">
         <button class="bg-green viewTool">
@@ -37,21 +42,25 @@
           <i class="bi bi-pencil-square"></i>
           <span> Edit</span>
         </button>
-        <button class="bg-red">
+        <button id="deleteBtn" class="bg-red">
           <i class="bi bi-trash3"></i>
-          <a href="/delete/{{id}}">
-            <span> Delete</span>
-          </a>
+          <span> Delete</span>
+          <div class="deleteBtnActive hidden">
+            <a href="/delete/{{id}}">
+              Yes, delete
+            </a>
+            <span>No, keep</span>
+          </div>
         </button>
+
       </div>
     </div>
   {{/each}}
 </div>
 
 <div class="tools-wrapper hidden">
+  <div id="view" class="view hidden">
 
-  <div class="view">
-    <button class="closeToolsWrapper"><i class="bi bi-x-lg"></i></button>
   </div>
 </div>
 
