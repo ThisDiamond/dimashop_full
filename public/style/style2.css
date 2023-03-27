@@ -266,6 +266,9 @@ nav {
 .bg-red {
   background-color: #d94932;
 }
+.bg-gray {
+  background-color: #555555;
+}
 
 /*-------------------*/
 .tools-wrapper {
@@ -294,10 +297,10 @@ nav {
 .view {
   background-color: white;
   width: 100%;
-  height: 90%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   flex-direction: column;
   gap: 25px;
   padding: 25px;
@@ -306,13 +309,11 @@ nav {
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 0 50px;
 }
 .view-text-area {
 }
-.view img {
-  height: 380px; /* add media query*/
-  margin-bottom: 20px;
-}
+
 .view-title {
 }
 .view-price {
@@ -342,6 +343,20 @@ nav {
   color: #d94932;
   font-size: xx-large;
   border: 0;
+}
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px 15px;
+}
+.product-info-img-area {
+  max-width: 400px;
+  max-height: 400px;
+}
+.product-info-img {
+  width: 100%;
 }
 .hidden {
   display: none;

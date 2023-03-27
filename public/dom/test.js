@@ -1,5 +1,5 @@
 const toolsWrapper = document.querySelector(".tools-wrapper");
-const toolsWrapperClose = document.querySelector(".tools-wrapper-close")
+const toolsWrapperClose = document.querySelector(".tools-wrapper-close");
 const viewTools = document.querySelectorAll(".viewTool");
 const view = document.querySelector(".view");
 
@@ -9,7 +9,6 @@ viewTools.forEach((viewTool) => {
     view.classList.remove("hidden");
   });
 });
-
 
 const deleteBtns = document.querySelectorAll("#deleteBtn");
 const deleteBtnActives = document.querySelectorAll(".deleteBtnActive");
@@ -39,12 +38,14 @@ viewButtons.forEach((button) => {
     const viewSection = document.querySelector(".view");
     viewSection.innerHTML = `
     <div class='view-product-area'>
-      <img src="${image}" alt="${title}" />
+      <div class='product-info-img-area'>
+        <img src="${image}" alt="${title}" class='product-info-img'/>
+      </div>
       <div class='view-text-area'>
           <h5 class="view-title">${title}</h5>
           <hr/>
           <p> ${description}</p>
-          <p class='view-price'>Price: ${price}</p>
+          <p class='view-price'>${price}</p>
       </div>
     </div>
     `;
@@ -64,25 +65,34 @@ viewEdit.forEach((button) => {
     const product = button.closest(".product");
     const title = product.querySelector(".product-th").textContent;
     const description = product.querySelector(".description").textContent;
-    const idProduct = product.querySelector(".idProduct").textContent;
+    const productId = product.querySelector(".idProduct").textContent.trim(); //remove all space
     const price = product.querySelector(".product-price").textContent;
     const image = product.querySelector(".product-img").getAttribute("src");
 
     // display the product details in the view section
     const viewSection = document.querySelector(".view");
     viewSection.innerHTML = `
-${idProduct}
     <div class='view-edit-area'>
-    <div>
-       <img src="${image}" alt="${title}" />
+    <div class='product-info'>
+     <div class='product-info-img-area'>
+      <img src="${image}" alt="${title}" class='product-info-img'/>
+     </div>
+     <div>
        <h5 class="view-title">${title}</h5>
        <hr/>
        <p> ${description}</p>
-       <p class='view-price'>Price: ${price}</p>
+       <p class='view-price'>${price}</p>
+      </div>
     </div>
     <div class='view-edit-form'>
-    <form action="./add-products" method="post">
+    <form action="./edit-products" method="post">
     <div class="form-floating mb-3">
+      <input
+        name="productId"
+        type="text"
+        class="hidden"
+        value="${productId}"
+      />
       <input
         name="title"
         type="text"

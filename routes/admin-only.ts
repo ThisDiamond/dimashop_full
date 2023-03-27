@@ -116,4 +116,53 @@ router.post("/add-products", getTokenUser, checkAdmin, (req: Request, res: Respo
   }
 });
 
+
+router.post("/edit-products", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  const productId = req.body.productId;
+  const newTitle = req.body.title
+  const newDescription = req.body.description
+  const newImage = req.body.image
+  const newPrice = req.body.price
+
+  db.get(`SELECT * FROM Product WHERE id=?`, [productId], (err, product: Product) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    if (!product) {
+      res.status(404).send("Product not found");
+      return;
+    }
+
+    //validatsya qilish kerak
+    const sql = db.prepare(`UPDATE Product 
+    SET title = COALESCE(?, title), 
+        description = COALESCE(?, description), 
+        image = COALESCE(?, image), 
+        price = COALESCE(?, price) 
+    WHERE id = ?`);
+
+    const params = [
+      newTitle !== '' ? newTitle : product.title,
+      newDescription !== '' ? newDescription : product.description,
+      newImage !== '' ? newImage : product.image,
+      newPrice !== '' ? newPrice : product.price,
+      productId
+    ];
+    
+    sql.run(params, (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      req.flash("isAddProducts", "Mahsulot muvaffaqiyatli o'zgartirilgan!");
+      res.redirect("/products_list_admin");
+    });
+
+  });
+});
+
 export default router;
