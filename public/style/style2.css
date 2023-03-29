@@ -15,16 +15,21 @@ header {
   align-items: center;
   gap: 0 25px;
   padding: 0px 20px;
+  padding-left: 0;
   /* border-bottom: 3px solid #b6b6b6; */
 }
 aside {
   overflow: hidden;
   background-color: #3c4b64;
   color: white;
-  min-width: 250px;
+  width: 70px;
   height: 100v;
   padding: 30px 20px;
   /* border-right: 3px solid #b6b6b6; */
+  transition: all 500ms ease 500ms;
+}
+aside.wide {
+  width: 290px;
 }
 main {
   width: 100%;
@@ -48,6 +53,7 @@ nav {
   margin-bottom: 20px;
 }
 .logo {
+  opacity: 1;
   height: 33px;
 }
 
@@ -92,12 +98,18 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+.menu-icon-btn {
+  background-color: white;
+  border: 0;
+  font-size: 27px;
+}
 .menu-item-icon {
   width: 36px;
 }
 .menu-item a {
   display: flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: rgb(240, 240, 240);
   /* color: #555555; */
@@ -119,6 +131,7 @@ nav {
   color: rgb(240, 240, 240);
   /* color: #858585; */
 }
+
 .logo-area {
   background-color: #ffffff;
   border-radius: 10px;
@@ -172,6 +185,9 @@ nav {
   display: flex;
   justify-content: stretch;
   flex-wrap: wrap;
+  gap: 10px;
+}
+.products.wide {
   gap: 20px;
 }
 .product {

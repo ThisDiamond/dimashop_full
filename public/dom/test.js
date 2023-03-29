@@ -64,9 +64,10 @@ viewEdit.forEach((button) => {
     // get the product details for the clicked product
     const product = button.closest(".product");
     const title = product.querySelector(".product-th").textContent;
-    const description = product.querySelector(".description").textContent;
+    const description = product.querySelector(".description").textContent.trim();
     const productId = product.querySelector(".idProduct").textContent.trim(); //remove all space
-    const price = product.querySelector(".product-price").textContent;
+    const getTextprice = product.querySelector(".product-price").textContent;
+    const price = getTextprice.replace(/\D/g, '');
     const image = product.querySelector(".product-img").getAttribute("src");
 
     // display the product details in the view section
@@ -98,7 +99,7 @@ viewEdit.forEach((button) => {
         type="text"
         class="form-control"
         id="floatingInput"
-        placeholder="title"
+        value="${title}"
       />
       <label for="floatingInput">Title</label>
     </div>
@@ -109,7 +110,7 @@ viewEdit.forEach((button) => {
         placeholder="Description"
         id="floatingTextarea2"
         style="min-height: 250px"
-      ></textarea>
+      >${description}</textarea>
       <label for="floatingTextarea2">Description</label>
     </div>
     <div class="form-floating mb-3">
@@ -119,6 +120,7 @@ viewEdit.forEach((button) => {
         class="form-control"
         id="floatingInput"
         placeholder="image"
+        value='${image}'
       />
       <label for="floatingInput">image</label>
     </div>
@@ -131,6 +133,7 @@ viewEdit.forEach((button) => {
         placeholder="Price"
         aria-label="Username"
         aria-describedby="addon-wrapping"
+        value='${price}'
       />
     </div>
     <button class="btn btn-primary mt-3">Yuborish</button>

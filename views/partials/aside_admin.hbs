@@ -1,52 +1,63 @@
 <aside>
-  <a href="/dashboard" class="logo-area-a">
-    <img src="img/dimashop-black.png" alt="" class="logo" />
+  <a href="/dashboard">
+    <img src="img/dimashop-black.png" alt="" class="logo hidden logo-wide" />
+    <img src="img/dimashop-circle-icon.png" alt="" class="logo logo-narrow" />
   </a>
   <hr /><br />
   <nav>
     <ul class="menu">
+
       <li class="menu-item">
-        <a href="/dashboard">
-          <i class="bi bi-speedometer2"></i>
-          <span> Dashboard </span>
+        <a href="/dashboard" class="menu-item-a">
+          <i class="bi bi-speedometer2 menu-item-i"></i>
+          <span class="menu-item-span"> Dashboard </span>
         </a>
-        {{! <i class="bi bi-arrow-right-short"></i> }}
       </li>
+
       <li class="menu-item">
-        <a href="/products_list_admin">
-          <i class="bi bi-box-seam"></i>
-          <span> Products</span>
+        <a href="/products_list_admin" class="menu-item-a">
+          <i class="bi bi-box-seam menu-item-i"></i>
+          <span class="menu-item-span"> Products</span>
         </a>
         <i class="bi bi-arrow-right-short" id="changeVisProduct"></i>
       </li>
+
       <li id="changeVisProductitem" class="menu-item hidden">
+
         <ul>
-          <a href="/products_list_admin"><li>Product list</li></a>
+          <a href="/products_list_admin" class="menu-item-a">
+            <li>Product list</li>
+          </a>
           <a href="/add"><li>Add products</li></a>
           <li>Categories</li>
         </ul>
+
       </li>
+
       <li class="menu-item">
-        <a href="/users_admin">
-          <i class="bi bi-people"></i>
-          <span> Users</span>
+        <a href="/users_admin" class="menu-item-a">
+          <i class="bi bi-people menu-item-i"></i>
+          <span class="menu-item-span"> Users</span>
         </a>
-        {{! <i class="bi bi-arrow-right-short"></i> }}
       </li>
+
       <li class="menu-item">
-        <a href="/dashboard">
-          <i class="bi bi-credit-card-2-back"></i>
-          <span> Transactions</span>
+        <a href="/dashboard" class="menu-item-a">
+          <i class="bi bi-credit-card-2-back menu-item-i"></i>
+          <span class="menu-item-span"> Transactions</span>
         </a>
         <i class="bi bi-arrow-right-short"></i>
       </li>
+
       <hr style="margin: 0" />
+
       <li class="menu-item">
-        <a href="/dashboard">
-          <i class="bi bi-gear"></i>
-          <span> Settings </span>
+        <a href="/dashboard" class="menu-item-a">
+          <i class="bi bi-gear menu-item-i"></i>
+          <span class="menu-item-span"> Settings </span>
         </a>
       </li>
+
     </ul>
   </nav>
 
