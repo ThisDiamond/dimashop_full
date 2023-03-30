@@ -20,6 +20,23 @@
   </div>
 {{/if}}
 
+{{#if isChangeProduct}}
+  <div
+    class="alert alert-success alert-dismissible fade show w-100"
+    id="errorCloseBtn"
+    role="alert"
+  >
+    <strong>Muvaffaqqiyatli! </strong>
+    {{isChangeProduct}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/if}}
+
 <div class="products">
   {{#each product}}
     <div class="product">
