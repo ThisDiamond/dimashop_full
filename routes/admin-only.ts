@@ -67,7 +67,7 @@ router.get("/products_list_admin", getTokenUser, checkAdmin, (req: Request, res:
       res.status(500).send("Internal server error");
       return;
     }
-    db.all("SELECT * FROM categories;",  (err, rows) => {
+    db.all("SELECT * FROM categories;", (err, rows) => {
       if (err) console.log(err)
 
       res.status(200).render("admin/products_list_admin", {
@@ -81,15 +81,18 @@ router.get("/products_list_admin", getTokenUser, checkAdmin, (req: Request, res:
 });
 
 router.get("/add", getTokenUser, checkAdmin, (req: Request, res: Response) => {
+  db.all("SELECT * FROM categories;", (err, rows) => {
+    if (err) console.log(err)
 
-  res.status(200).render("admin/add", {
-    title: "Add new product",
-    isAdd: true,
-    errorAddProducts: req.flash("errorAddProducts"),
-    isAddProducts: req.flash("isAddProducts"),
-    statusAdmin: true,
-  });
-
+    res.status(200).render("admin/add", {
+      title: "Add new product",
+      isAdd: true,
+      errorAddProducts: req.flash("errorAddProducts"),
+      isAddProducts: req.flash("isAddProducts"),
+      statusAdmin: true,
+      categories: rows
+    });
+  })
 });
 
 router.get('/delete/:id', getTokenUser, checkAdmin, (req: Request, res: Response) => {
@@ -101,16 +104,16 @@ router.get('/delete/:id', getTokenUser, checkAdmin, (req: Request, res: Response
 })
 
 router.post("/add-products", getTokenUser, checkAdmin, (req: Request, res: Response) => {
-  const { title, description, image, price } = req.body;
-  if (!title || !description || !image || !price) {
+  const { title, description, image, price, cat_id } = req.body;
+  if (!title || !description || !image || !price || !cat_id) {
     req.flash("errorAddProducts", `Hamma maydonlar to'ldirilishi shart!`);
     res.redirect("/add");
   } else {
     // validatsiya qilishi kerak
     const sql =
-      "INSERT INTO Product(id, title, description, image, price) VALUES(?,?,?,?,?)";
+      "INSERT INTO Product(id, title, description, image, price, cat_id) VALUES(?,?,?,?,?,?)";
     const uuidGen = v4();
-    const params = [uuidGen, title, description, image, price];
+    const params = [uuidGen, title, description, image, price, cat_id];
     db.run(sql, params, (err) => {
       if (err != null) console.log(err);
     });

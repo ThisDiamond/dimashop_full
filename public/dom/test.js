@@ -17,6 +17,9 @@ viewTools.forEach((viewTool) => {
 
 productsMenuBtn.addEventListener("click", () => {
   productsMenuVis.classList.toggle("hidden");
+  setTimeout(function () {
+    productsMenuVis.classList.add("hidden");
+  }, 3000);
 });
 
 products.addEventListener("click", () => {
