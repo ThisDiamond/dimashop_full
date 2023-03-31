@@ -1,6 +1,27 @@
 <div class="products-head">
-  <h2>Products list</h2>
+  <div class="products-menu-wrapper">
+
+    <h2 class="products-menu-head">Products list</h2>
+    <div class="products-menu-area">
+      <button class="products-menu-btn">
+        <i class="bi bi-grid"></i>
+        <span>Category</span>
+        <i class="bi bi-chevron-down"></i>
+      </button>
+      <div class="products-menu">
+        <ul class="products-menu-vis hidden">
+          {{#each categories}}
+            <li class="products-menu-vis-li">
+              <span class="products-manu-cat_id hidden">{{cat_id}}</span>
+              <span>{{cat_name}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
   <a href="/add">add product</a>
+
 </div>
 
 {{#if deleteProduct}}
@@ -20,26 +41,12 @@
   </div>
 {{/if}}
 
-{{#if isChangeProduct}}
-  <div
-    class="alert alert-success alert-dismissible fade show w-100"
-    id="errorCloseBtn"
-    role="alert"
-  >
-    <strong>Muvaffaqqiyatli! </strong>
-    {{isChangeProduct}}
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-    ></button>
-  </div>
-{{/if}}
-
 <div class="products">
   {{#each product}}
     <div class="product">
+      <div class="cat_id hidden">
+        {{cat_id}}
+      </div>
       <div class="product-img-area">
         <img src="{{image}}" alt="" class="product-img" />
       </div>
@@ -86,8 +93,8 @@
       <span class="products-head-btns">
         <button class="bg-gray view-edit-button">
           save and edit
-          {{!-- <i class="bi bi-sd-card"></i>
-          <span> Save</span> --}}
+          {{! <i class="bi bi-sd-card"></i>
+          <span> Save</span> }}
         </button>
         <button class="tools-wrapper-close"><i
             class="bi bi-x-square"
