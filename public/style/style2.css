@@ -186,7 +186,7 @@ nav {
 }
 .products-menu-vis li span {
   padding: 15px;
-  cursor:default;
+  cursor: default;
 }
 .products-menu-vis li:hover {
   background-color: #d9d9d9;
@@ -377,11 +377,7 @@ nav {
   align-items: center;
   gap: 0 50px;
 }
-.view-text-area {
-}
 
-.view-title {
-}
 .view-price {
   margin-top: 25px;
   font-size: larger;
