@@ -3,6 +3,11 @@ const toolsWrapperClose = document.querySelector(".tools-wrapper-close");
 const viewTools = document.querySelectorAll(".viewTool");
 const view = document.querySelector(".view");
 
+const productsMenuBtn = document.querySelector(".products-menu-btn");
+const productsMenuVis = document.querySelector(".products-menu-vis");
+const main = document.querySelector("main");
+const products = document.querySelector(".products");
+
 viewTools.forEach((viewTool) => {
   viewTool.addEventListener("click", () => {
     toolsWrapper.classList.remove("hidden");
@@ -10,6 +15,13 @@ viewTools.forEach((viewTool) => {
   });
 });
 
+productsMenuBtn.addEventListener("click", () => {
+  productsMenuVis.classList.toggle("hidden");
+});
+
+products.addEventListener("click", () => {
+  productsMenuVis.classList.add("hidden");
+});
 const deleteBtns = document.querySelectorAll("#deleteBtn");
 const deleteBtnActives = document.querySelectorAll(".deleteBtnActive");
 
@@ -64,10 +76,12 @@ viewEdit.forEach((button) => {
     // get the product details for the clicked product
     const product = button.closest(".product");
     const title = product.querySelector(".product-th").textContent;
-    const description = product.querySelector(".description").textContent.trim();
+    const description = product
+      .querySelector(".description")
+      .textContent.trim();
     const productId = product.querySelector(".idProduct").textContent.trim(); //remove all space
     const getTextprice = product.querySelector(".product-price").textContent;
-    const price = getTextprice.replace(/\D/g, '');
+    const price = getTextprice.replace(/\D/g, "");
     const image = product.querySelector(".product-img").getAttribute("src");
 
     // display the product details in the view section
@@ -153,4 +167,24 @@ viewEdit.forEach((button) => {
 
 toolsWrapperClose.addEventListener("click", () => {
   toolsWrapper.classList.add("hidden");
+});
+
+/******************************/
+const menuItems = document.querySelectorAll(".products-menu-vis-li");
+
+menuItems.forEach((menuItem) => {
+  menuItem.addEventListener("click", (event) => {
+    const catId = event.currentTarget.querySelector(
+      ".products-manu-cat_id"
+    ).textContent;
+    const products = document.querySelectorAll(".product");
+
+    products.forEach((product) => {
+      if (product.querySelector(".cat_id").textContent.trim() !== catId) {
+        product.style.display = "none";
+      } else {
+        product.style.display = "block";
+      }
+    });
+  });
 });

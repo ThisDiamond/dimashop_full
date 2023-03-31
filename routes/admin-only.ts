@@ -67,13 +67,16 @@ router.get("/products_list_admin", getTokenUser, checkAdmin, (req: Request, res:
       res.status(500).send("Internal server error");
       return;
     }
+    db.all("SELECT * FROM categories;",  (err, rows) => {
+      if (err) console.log(err)
 
-    res.status(200).render("admin/products_list_admin", {
-      statusAdmin: true,
-      deleteProduct: req.flash('deleteProduct'),
-      product,
-    });
+      res.status(200).render("admin/products_list_admin", {
+        statusAdmin: true,
+        deleteProduct: req.flash('deleteProduct'),
+        product, categories: rows
+      });
 
+    })
   });
 });
 
@@ -151,7 +154,7 @@ router.post("/edit-products", getTokenUser, checkAdmin, (req: Request, res: Resp
       newPrice !== '' ? newPrice : product.price,
       productId
     ];
-    
+
     sql.run(params, (err) => {
       if (err) {
         console.log(err);

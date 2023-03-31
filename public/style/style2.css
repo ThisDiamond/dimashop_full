@@ -2,11 +2,11 @@
 * {
   box-sizing: border-box;
   outline: none;
+  margin: 0;
 }
 body {
   font-family: "Poppins", sans-serif;
 }
-
 header {
   width: 100%;
   height: 60px;
@@ -16,16 +16,14 @@ header {
   gap: 0 25px;
   padding: 0px 20px;
   padding-left: 0;
-  /* border-bottom: 3px solid #b6b6b6; */
 }
 aside {
   overflow: hidden;
   background-color: #3c4b64;
   color: white;
   width: 70px;
-  height: 100v;
+  min-height: 100v;
   padding: 30px 20px;
-  /* border-right: 3px solid #b6b6b6; */
   transition: all 500ms ease 500ms;
 }
 aside.wide {
@@ -37,7 +35,7 @@ main {
   display: flex;
   align-items: start;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px 25px;
   padding: 15px 20px;
 }
 nav {
@@ -47,7 +45,6 @@ nav {
 .main-wrapper {
   display: flex;
 }
-
 .logo-area-a {
   display: block;
   margin-bottom: 20px;
@@ -56,7 +53,6 @@ nav {
   opacity: 1;
   height: 33px;
 }
-
 .search-area {
   width: 100%;
   display: flex;
@@ -82,7 +78,7 @@ nav {
 .profile-area .user-icon {
   font-size: 32px;
 }
-
+/* menu */
 .menu {
   display: flex;
   flex-direction: column;
@@ -161,13 +157,67 @@ nav {
   font-size: 16px;
 }
 
-/* products*/
+/* products_list_admin */
 .products-head {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px 0 0;
+  padding: 0 15px 10px 0;
+}
+.products-menu-wrapper {
+  display: flex;
+  gap: 0 15px;
+}
+.products-menu-area {
+  display: flex;
+  align-items: center;
+  gap: 5px 15px;
+  position: relative;
+}
+.products-menu {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  left: 0;
+}
+.products-menu-vis li {
+  transition: 500ms;
+}
+.products-menu-vis li span {
+  padding: 15px;
+  cursor:default;
+}
+.products-menu-vis li:hover {
+  background-color: #d9d9d9;
+}
+.products-menu ul {
+  padding: 0;
+  width: 200px;
+  background-color: white;
+  list-style-type: none;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.products-menu ul li {
+  padding: 10px 0;
+}
+.products-menu-head {
+  margin: 0;
+  font-size: xx-large;
+}
+.products-menu-btn {
+  width: 200px;
+  background-color: #d94932;
+  color: white;
+  padding: 5px 15px;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+  font-size: larger;
 }
 .products-head-btns {
   display: flex;

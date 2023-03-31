@@ -10,11 +10,12 @@ import tokenMiddleware from './middleware/token'
 import AuthRoutes from './routes/auth'
 import ProductsRoutes from './routes/products'
 import adminOnly from './routes/admin-only'
+import hbsHelper from './helper/index'
 
 dotenv.config()
 
 const server: Express = express()
-const hbs = create({ defaultLayout: 'main', extname: 'hbs' })
+const hbs = create({ defaultLayout: 'main', extname: 'hbs', helpers: hbsHelper })
 
 
 server.engine('hbs', hbs.engine)
