@@ -153,7 +153,7 @@ viewEdit.forEach((button) => {
         value='${price}'
       />
     </div>
-    <button class="btn btn-primary mt-3">Saqlash</button>
+    <button class="btn btn-primary mt-3">Yuborish</button>
   </form>
     </div>
     </div>
