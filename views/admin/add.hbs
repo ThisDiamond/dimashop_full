@@ -39,6 +39,18 @@
   {{/if}}
 
   <form action="./add-products" method="post">
+
+    <select
+      name="cat_id"
+      class="form-select"
+      aria-label="Default select example"
+      style="margin-bottom: 20px; padding:15px 10px"
+    >
+      {{#each categories}}
+        <option value="{{cat_id}}">{{cat_name}}</option>
+      {{/each}}
+    </select>
+
     <div class="form-floating mb-3">
       <input
         name="title"
