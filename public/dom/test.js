@@ -5,7 +5,7 @@ const view = document.querySelector(".view");
 
 const productsMenuBtn = document.querySelector(".products-menu-btn");
 const productsMenuVis = document.querySelector(".products-menu-vis");
-const main = document.querySelector("main");
+const body = document.querySelector("body");
 const products = document.querySelector(".products");
 
 viewTools.forEach((viewTool) => {
