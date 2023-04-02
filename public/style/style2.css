@@ -1,4 +1,10 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+@font-face {
+  font-family: "neuropolitical";
+  src: url("/fonts/neuropolitical.otf");
+}
+
 * {
   box-sizing: border-box;
   outline: none;
@@ -29,6 +35,28 @@ aside {
 aside.wide {
   width: 290px;
 }
+.logo-wrapper {
+  text-decoration: none;
+  font-size: 9px;
+  transition: 500ms;
+}
+aside .dima-text {
+  font-family: neuropolitical;
+  padding: 3px 7px;
+  background-color: white;
+  color: #3c4b64;
+  border-radius: 10px 0 10px 0;
+  margin: 0;
+}
+aside .shop-text {
+  margin-left: 5px;
+  font-family: neuropolitical;
+  color: white;
+}
+
+.narrowText {
+  font-size: 24px;
+}
 main {
   width: 100%;
   color: #3c4b64;
@@ -48,6 +76,8 @@ nav {
 .logo-area-a {
   display: block;
   margin-bottom: 20px;
+}
+.logo-wrapper {
 }
 .logo {
   opacity: 1;
