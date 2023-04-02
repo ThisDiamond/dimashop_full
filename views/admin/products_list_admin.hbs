@@ -10,9 +10,13 @@
       </button>
       <div class="products-menu">
         <ul class="products-menu-vis hidden">
+          <li class="products-menu-vis-li">
+            <span class="products-menu-cat_id hidden">9999</span>
+            <span><b> Hammasi</b></span>
+          </li>
           {{#each categories}}
             <li class="products-menu-vis-li">
-              <span class="products-manu-cat_id hidden">{{cat_id}}</span>
+              <span class="products-menu-cat_id hidden">{{cat_id}}</span>
               <span>{{cat_name}}</span>
             </li>
           {{/each}}

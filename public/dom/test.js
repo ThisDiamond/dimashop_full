@@ -175,15 +175,23 @@ const menuItems = document.querySelectorAll(".products-menu-vis-li");
 menuItems.forEach((menuItem) => {
   menuItem.addEventListener("click", (event) => {
     const catId = event.currentTarget.querySelector(
-      ".products-manu-cat_id"
+      ".products-menu-cat_id"
     ).textContent;
     const products = document.querySelectorAll(".product");
 
     products.forEach((product) => {
+      if (catId == 9999) {
+        product.classList.remove("hidden");
+      }
+    });
+
+    products.forEach((product) => {
       if (product.querySelector(".cat_id").textContent.trim() !== catId) {
-        product.style.display = "none";
+        // product.style.display = "none";
+        product.classList.add("hidden");
       } else {
-        product.style.display = "block";
+        // product.style.display = "block";
+        product.classList.remove("hidden");
       }
     });
   });
