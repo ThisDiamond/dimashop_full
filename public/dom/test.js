@@ -5,7 +5,7 @@ const view = document.querySelector(".view");
 
 const productsMenuBtn = document.querySelector(".products-menu-btn");
 const productsMenuVis = document.querySelector(".products-menu-vis");
-const body = document.querySelector("body");
+const main = document.querySelector("main");
 const products = document.querySelector(".products");
 
 viewTools.forEach((viewTool) => {
@@ -17,9 +17,6 @@ viewTools.forEach((viewTool) => {
 
 productsMenuBtn.addEventListener("click", () => {
   productsMenuVis.classList.toggle("hidden");
-  setTimeout(function () {
-    productsMenuVis.classList.add("hidden");
-  }, 3000);
 });
 
 products.addEventListener("click", () => {

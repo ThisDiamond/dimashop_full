@@ -12,14 +12,16 @@
   <tbody>
 
     {{#each data}}
-      <tr>
-        <th scope="row">{{@index}}</th>
-        <td>{{this.id}}</td>
-        <td>{{this.firstname}}</td>
-        <td>{{this.lastname}}</td>
-        <td>{{this.email}}</td>
-        <td>{{this.password}}</td>
-      </tr>
+      {{#ifTek role 'user'}}
+        <tr>
+          <th scope="row">{{@index}}</th>
+          <td>{{this.id}}</td>
+          <td>{{this.firstname}}</td>
+          <td>{{this.lastname}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.password}}</td>
+        </tr>
+      {{/ifTek}}
     {{/each}}
 
   </tbody>
